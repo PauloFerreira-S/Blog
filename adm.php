@@ -74,16 +74,16 @@ header('content-type: text/html; charset=utf-8');
             <a href="/administracao/all_posts.php">TODOS OS POST</a>
           </li>
           <li class="liCategorias mt-5">
-            <a href="/administracao/criar_usuario.php">CRIAR USUARIO</a>
+            <a href="/administracao/criar_usuario.php">CRIAR USUÁRIO</a>
           </li>
           <li class="liCategorias">
-            <a href="/administracao/editar_usuario.php">EDITAR USUARIO</a>
+            <a href="/administracao/editar_usuario.php">EDITAR USUÁRIO</a>
           </li>
           <li class="liCategorias">
-            <a href="/administracao/deletar_usuario.php">DELETAR USUARIO</a>
+            <a href="/administracao/deletar_usuario.php">DELETAR USUÁRIO</a>
           </li>
           <li class="liCategorias">
-            <a href="/administracao/all_usuarios.php">TODOS OS USUARIOS</a>
+            <a href="/administracao/all_usuarios.php">TODOS OS USUÁRIOS</a>
           </li>
           <li class="liCategorias mt-5">
             <a href="/administracao/criar_topico.php">CRIAR TÓPICO</a>

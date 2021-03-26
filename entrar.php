@@ -1,4 +1,5 @@
-<?php $pagina = "entrar";$logado ="";
+<?php $pagina = "entrar";
+$logado = "";
 
 session_start();
 if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
@@ -22,10 +23,10 @@ header('content-type: text/html; charset=utf-8'); ?>
     <meta name="theme-color" content="#0375b4" />
 
     <title>Entrar</title>
-    <link href="assets/img/sisgesco icon.png" rel="icon">
-
-    <!-- Bootstrap CSS -->
+    <link href="assets/img/nav_icon.png" rel="icon">
+    <!-- Bootstrap & FontAwesome CSS -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Estilo Customizado -->
     <link href="assets/css/login.css" rel="stylesheet">
@@ -44,11 +45,11 @@ header('content-type: text/html; charset=utf-8'); ?>
                             </div>
                             <div class="">
                                 <label for="usuario" class="text-info"> Usuario </label>
-                                <input type="text" name="usuario" class="form-control">
+                                <input type="text" name="usuario" id="usuario" class="form-control">
                             </div>
                             <div class="">
                                 <label for="senha" class="text-info"> Senha </label>
-                                <input type="password" name="senha" class="form-control">
+                                <input type="password" name="senha" id="senha" class="form-control">
                             </div>
                             <div>
                                 <button type="submit" id="btnEntrar" class="btn btn-tema btn-block bg-tema mt-4">Entrar no blog</button>
@@ -63,7 +64,6 @@ header('content-type: text/html; charset=utf-8'); ?>
     <!-- Scripts -->
     <script src="assets/jquery/jquery-3.5.1.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js.js"></script>
 
 </body>
 

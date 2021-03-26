@@ -103,6 +103,20 @@ header('content-type: text/html; charset=utf-8'); ?>
       <!-- Barra Lateral -->
       <div class="col-md-4">
 
+        <div class="card mb-4">
+          <h5 class="card-header">Pesquisar</h5>
+          <form id="pesquisar" method="post" action="pesquisa.php">
+            <div class="card-body">
+              <div class="input-group">
+                <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por...">
+                <span class="input-group-append">
+                  <button type="submit" class="btn btn-secondary" name="btnPesquisa" id="btnPesquisa">Pesquisar</button>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+
         <!-- Categorias -->
         <div class="card">
           <h5 class="card-header">Categorias</h5>

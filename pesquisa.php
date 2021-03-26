@@ -68,27 +68,30 @@ header('content-type: text/html; charset=utf-8'); ?>
 
                 <!-- Postagens -->
                 <?php
-                $pesquisa = ($_POST['pesquisa']);
-                $item = "%" . $pesquisa . "%";
-                $con = pesquisarPost($item);
-                while ($dado = $con->fetch_array()) {
+                if (isset($_POST['pesquisa'])) {
+                    $pesquisa = ($_POST['pesquisa']);
+                    $item = "%" . $pesquisa . "%";
+                    $con = pesquisarPost($item);
+                    while ($dado = $con->fetch_array()) {
+
                 ?>
 
-                    <div class="card mb-4">
-                        <img class="card-img-top" alt="Card image cap" <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($dado['imagem']) . '"'; ?>>
-                        <div class="card-body">
-                            <h2 class="card-title"><?php echo $dado['titulo']; ?></h2>
-                            <p class="card-text text-justify"><?php echo $dado['descricao']; ?></p>
-                            <?php $titulo = $dado['titulo'];
-                            $titulo_novo = preg_replace('/[ -]+/', '_', $titulo);
-                            ?>
-                            <a href="post.php?post=<?php echo $titulo_novo; ?>" class="btn btn-secund">Leia Mais &rarr;</a>
+                        <div class="card mb-4">
+                            <img class="card-img-top" alt="Card image cap" <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($dado['imagem']) . '"'; ?>>
+                            <div class="card-body">
+                                <h2 class="card-title"><?php echo $dado['titulo']; ?></h2>
+                                <p class="card-text text-justify"><?php echo $dado['descricao']; ?></p>
+                                <?php $titulo = $dado['titulo'];
+                                $titulo_novo = preg_replace('/[ -]+/', '_', $titulo);
+                                ?>
+                                <a href="post.php?post=<?php echo $titulo_novo; ?>" class="btn btn-secund">Leia Mais &rarr;</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Postado em <?php echo $dado['criado_em']; ?>
+                            </div>
                         </div>
-                        <div class="card-footer text-muted">
-                            Postado em <?php echo $dado['criado_em']; ?>
-                        </div>
-                    </div>
-                <?php } ?>
+                <?php }
+                } ?>
 
                 <!-- Paginas -->
                 <ul class="pagination justify-content-center mb-4">
