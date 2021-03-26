@@ -2,13 +2,13 @@
 $logado = "";
 
 session_start();
-if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true)) {
-  unset($_SESSION['login']);
-  unset($_SESSION['senha']);
-  header('location: ../index.php');
+if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['usuario']);
+    unset($_SESSION['senha']);
+    header('location: ../index.php');
 }
 
-$logado = $_SESSION['login'];
+$logado = $_SESSION['usuario'];
 
 
 include '../assets/includes/funcoes.php';
@@ -66,7 +66,7 @@ header('content-type: text/html; charset=utf-8mb4'); ?>
     <!-- Criando o Post -->
 
     <h3>Criar Postagem</h3>
-    <form id="contactForm" method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action="../assets/includes/funcoes.php">
       <div class="control-group form-group">
         <div class="controls">
           <label for="usuario de criacao do post">Usuario ID: <?php echo ($logado); ?></label>
@@ -111,9 +111,7 @@ header('content-type: text/html; charset=utf-8mb4'); ?>
           <?php } ?>
         </select>
       </div>
-      <button onclick="
-          <?php $resultado = criarPost($titulo, $imagem, $descricao, $texto, $topico, $usuario) ?>" type="submit" name="criarpost" class="btn btn-tema" id="criarpost">Criar Post</button>
-      <div class="retornoFunc"><?php echo ($resultado); ?> </div>
+      <button type="submit" name="criarpost" class="btn btn-tema" id="criarpost">Criar Post</button>
     </form>
     <hr>
   </div>

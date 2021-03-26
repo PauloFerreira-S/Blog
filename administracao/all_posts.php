@@ -2,13 +2,13 @@
 $logado = "";
 
 session_start();
-if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true)) {
-    unset($_SESSION['login']);
+if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['usuario']);
     unset($_SESSION['senha']);
     header('location: ../index.php');
 }
 
-$logado = $_SESSION['login'];
+$logado = $_SESSION['usuario'];
 
 
 include '../assets/includes/funcoes.php';

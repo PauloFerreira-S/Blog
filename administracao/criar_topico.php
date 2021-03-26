@@ -2,13 +2,13 @@
 $logado = "";
 
 session_start();
-if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true)) {
-  unset($_SESSION['login']);
-  unset($_SESSION['senha']);
-  header('location: ../index.php');
+if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['usuario']);
+    unset($_SESSION['senha']);
+    header('location: ../index.php');
 }
 
-$logado = $_SESSION['login'];
+$logado = $_SESSION['usuario'];
 
 
 include '../assets/includes/funcoes.php';
@@ -65,16 +65,14 @@ header('content-type: text/html; charset=utf-8mb4'); ?>
 
     <!-- Criando o Post -->
         <h3>Criar Tópico</h3>
-        <form id="contactForm" method="post">
+        <form method="post" action="../assets/includes/funcoes.php">
           <div class="control-group form-group">
             <div class="controls">
               <label for="nome do topico">Nome:</label>
-              <input type="text" name="nome" class="form-control" id="nome" minlength="10" required>
+              <input type="text" name="nome" class="form-control" id="nome" minlength="4" required>
             </div>
           </div>
-          <button onclick="
-          <?php $resultado = criarTopico($nome) ?>" type="submit" name="criartopico" class="btn btn-tema" id="criartopico">Criar Tópico</button>
-          <div class="retornoFunc"><?php echo ($resultado); ?> </div>
+          <button type="submit" name="criartopico" class="btn btn-tema" id="criartopico">Criar Tópico</button>
         </form>
         <hr>
       </div>

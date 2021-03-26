@@ -1,6 +1,6 @@
 <footer class="rodape bg-rodape pt-3">
 
-  <div class="container">
+  <div class="">
 
     <div class="text-center mt-5">
       <p class="textRodape"> NOS ACOMPANHE NAS REDES SOCIAIS </p>

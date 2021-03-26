@@ -1,14 +1,13 @@
 <?php $pagina = "criar_usuario"; $logado = "";
 
 session_start();
-if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
-{
-  unset($_SESSION['login']);
-  unset($_SESSION['senha']);
-  header('location: ../index.php');
-  }
+if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['usuario']);
+    unset($_SESSION['senha']);
+    header('location: ../index.php');
+}
 
-$logado = $_SESSION['login'];
+$logado = $_SESSION['usuario'];
 
 include '../assets/includes/funcoes.php';
 header('content-type: text/html; charset=utf-8'); ?>
@@ -64,7 +63,7 @@ header('content-type: text/html; charset=utf-8'); ?>
 
     <!-- Criando o Post -->
         <h3>Criar Usuario</h3>
-        <form id="contactForm" method="post">
+        <form method="post" action="../assets/includes/funcoes.php">
           <div class="control-group form-group">
             <div class="controls">
               <label for="titulo do post">Nome:</label>
@@ -83,9 +82,7 @@ header('content-type: text/html; charset=utf-8'); ?>
               <input class="form-control" type="password" name="senhaUser" id="senhaUser" minlength="5" required></input>
             </div>
           </div>
-          <button onclick="
-          <?php $resultado = criarUser($nome,$email,$senha)?>" type="submit" name="criaruser" class="btn btn-tema" id="criaruser">Criar Usuario</button>
-          <div class="retornoFunc"><?php echo ($resultado); ?></div>
+          <button type="submit" name="criaruser" class="btn btn-tema" id="criaruser">Criar Usuario</button>
         </form>
         <hr>
       </div>

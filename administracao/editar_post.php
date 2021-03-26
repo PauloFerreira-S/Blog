@@ -2,13 +2,13 @@
 $logado = "";
 
 session_start();
-if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true)) {
-  unset($_SESSION['login']);
+if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
+  unset($_SESSION['usuario']);
   unset($_SESSION['senha']);
   header('location: ../index.php');
 }
 
-$logado = $_SESSION['login'];
+$logado = $_SESSION['usuario'];
 
 include '../assets/includes/funcoes.php';
 header('content-type: text/html; charset=utf-8'); ?>
@@ -67,70 +67,66 @@ header('content-type: text/html; charset=utf-8'); ?>
       $titulo = ($_GET['buscaTitulo']);
       $titulo_novo = preg_replace('/[ _-]+/', ' ', $titulo);
       $con = selectPost($titulo_novo);
-      $dado = $con->fetch_array();
-    } else {
+      $dado = $con->fetch_array(); ?>
 
+      <!-- Editar post -->
+      <h3>Editar Postagem</h3>
+      <form class="form_control mt-4" method="post" action="../assets/includes/funcoes.php">
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="titulo do post">ID:</label>
+            <input type="text" name="id" class="form-control" id="id" value="<?php echo $dado['id']; ?>" readonly>
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="titulo do post">Titulo:</label>
+            <input type="text" name="titulo" class="form-control" id="titulo" minlength="10" value="<?php echo $dado['titulo']; ?>" required>
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="descricao do post">Descrição:</label>
+            <small class="caracteres"></small>
+            <textarea class="form-control" rows="4" cols="100" name="descricao" id="descricao" minlength="20" maxlength="150" style="resize:none" required><?php echo $dado['descricao']; ?></textarea>
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="texto do post">Texto:</label>
+            <small class="texto"></small>
+            <textarea class="form-control" rows="10" cols="100" name="texto" id="texto" minlength="150" style="resize:none" required><?php echo $dado['texto']; ?></textarea>
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <label for="topico">Selecione o Topico:</label>
+          <select class="form-control" id="topico" name="topico">
+            <?php
+            $con = topicos();
+            while ($topico = $con->fetch_array()) {
+            ?>
+              <option value="<?php echo $topico['id']; ?>"><?php echo $topico['nome']; ?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <button type="submit" name="editarpost" class="btn btn-tema" id="editarpost">Editar Post</button>
+      </form>
+      <hr>
+    <?php
+    } else {
     ?>
 
-      <h3>Editar Postagem</h3>
-      <form class="form_control" id="busca" method="post">
+      <form class="form_control" method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
             <label for="titulo do post">Titulo do Post:</label>
-            <input type="text" name="buscaTitulo" class="form-control" id="buscaTitulo" minlength="4" required required data-validation-required-message="Por favor, digite o Titulo da postagem para editar.">
+            <input type="text" name="buscaTitulo" class="form-control" id="buscaTitulo" minlength="4" required>
           </div>
         </div>
-        <button onclick="<?php $titulo = ($_POST["buscaTitulo"]);
-                          $con = selectPost($titulo);
-                          $dado = $con->fetch_array(); ?>" type="submit" name="selecionarpost" class="btn btn-tema" id="selecionarpost">Selecionar Post</button>
+        <button type="submit" name="editPost" class="btn btn-tema">Selecionar Post</button>
       </form>
       <hr>
     <?php } ?>
-
-    <!-- Editar post -->
-    <form class="form_control mt-4" id="edita" method="post">
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="titulo do post">ID:</label>
-          <input type="text" name="id" class="form-control" id="id" value="<?php echo $dado['id']; ?>" readonly>
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="titulo do post">Titulo:</label>
-          <input type="text" name="titulo" class="form-control" id="titulo" minlength="10" value="<?php echo $dado['titulo']; ?>" required required data-validation-required-message="Por favor, digite o Titulo.">
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="descricao do post">Descrição:</label>
-          <small class="caracteres"></small>
-          <textarea class="form-control" rows="4" cols="100" name="descricao" id="descricao" minlength="20" maxlength="150" style="resize:none" required required data-validation-required-message="Por favor, digite a Descrição."><?php echo $dado['descricao']; ?></textarea>
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="texto do post">Texto:</label>
-          <small class="texto"></small>
-          <textarea class="form-control" rows="10" cols="100" name="texto" id="texto" minlength="150" style="resize:none" required required data-validation-required-message="Por favor, digite o Texto."><?php echo $dado['texto']; ?></textarea>
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <label for="topico">Selecione o Topico:</label>
-        <select class="form-control" id="topico" name="topico">
-          <?php
-          $con = topicos();
-          while ($topico = $con->fetch_array()) {
-          ?>
-            <option value="<?php echo $topico['id']; ?>"><?php echo $topico['nome']; ?></option>
-          <?php } ?>
-        </select>
-      </div>
-      <button onclick="
-            <?php $resultado = editarPost($id, $topico, $titulo, $descricao, $texto); ?>" type="submit" name="editarpost" class="btn btn-tema" id="editarpost">Editar Post</button>
-      <div class="retornoFunc"><?php echo ($resultado); ?></div>
-    </form>
-    <hr>
 
   </div>
   <!-- /. Fim do Conteúdo da Pagina -->

@@ -1,13 +1,12 @@
-<?php $pagina = "entrar";
-$logado = "";
+<?php $pagina = "entrar";$logado ="";
 
 session_start();
-if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true)) {
-    unset($_SESSION['login']);
+if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['usuario']);
     unset($_SESSION['senha']);
 } else {
     header('location:index.php');
-    $logado = $_SESSION['login'];
+    $logado = $_SESSION['usuario'];
 }
 
 header('content-type: text/html; charset=utf-8'); ?>
@@ -39,20 +38,20 @@ header('content-type: text/html; charset=utf-8'); ?>
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" method=post>
-                            <div class="text-center text-white pt-5"">
+                        <form id="login-form" method="post" action="assets/includes/acesso.php">
+                            <div class="text-center text-white pt-5">
                                 <img alt="logo blog" class="logo-entrar" src="/assets/img/logo_entrar.png">
                             </div>
                             <div class="">
-                                <label for="login" class="text-info"> Usuario </label>
-                                <input type="text" name="login" class="form-control">
+                                <label for="usuario" class="text-info"> Usuario </label>
+                                <input type="text" name="usuario" class="form-control">
                             </div>
                             <div class="">
                                 <label for="senha" class="text-info"> Senha </label>
                                 <input type="password" name="senha" class="form-control">
                             </div>
                             <div>
-                                <button onclick="<?php include 'assets/includes/acesso.php'; ?>" type="submit" class="btn btn-tema btn-block bg-tema mt-4">Entrar no blog</button>
+                                <button type="submit" id="btnEntrar" class="btn btn-tema btn-block bg-tema mt-4">Entrar no blog</button>
                             </div>
                         </form>
                     </div>
@@ -64,6 +63,7 @@ header('content-type: text/html; charset=utf-8'); ?>
     <!-- Scripts -->
     <script src="assets/jquery/jquery-3.5.1.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js.js"></script>
 
 </body>
 

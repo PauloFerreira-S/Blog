@@ -2,13 +2,13 @@
 $logado = "";
 
 session_start();
-if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true)) {
-  unset($_SESSION['login']);
+if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
+  unset($_SESSION['usuario']);
   unset($_SESSION['senha']);
   header('location: ../index.php');
 }
 
-$logado = $_SESSION['login'];
+$logado = $_SESSION['usuario'];
 
 include '../assets/includes/funcoes.php';
 header('content-type: text/html; charset=utf-8'); ?>
@@ -68,56 +68,56 @@ header('content-type: text/html; charset=utf-8'); ?>
       $nome_novo = preg_replace('/[ _-]+/', ' ', $nome);
       $con = selectUser($nome_novo);
       $dado = $con->fetch_array();
-    } else {
+    ?>
 
+      <!-- Informações do Post -->
+      <form method="post" action="../assets/includes/funcoes.php">
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="titulo do post">ID:</label>
+            <input type="text" name="id" class="form-control" id="id" value="<?php echo $dado['id']; ?>" readonly>
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" class="form-control" id="nome" minlength="3" required value="<?php echo $dado['nome']; ?>">
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="email">Email:</label>
+            <input type="email" name="email" class="form-control" id="email" required value="<?php echo $dado['email']; ?>">
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="senha">Senha:</label>
+            <input class="form-control" type="password" name="senhaUser" id="senhaUser" minlength="5" required value="<?php echo $dado['senha']; ?>">
+          </div>
+        </div>
+        <button type="submit" name="editaruser" class="btn btn-tema" id="editaruser">Editar Usuario</button>
+      </form>
+      <hr>
+
+    <?php
+    } else {
     ?>
 
       <h3>Editar Usuario</h3>
-      <form id="busca" method="post">
+      <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
             <label for="nome do usuario">Nome do Usuario:</label>
             <input type="text" name="buscaNome" class="form-control" id="buscaNome" required>
           </div>
         </div>
-        <button onclick="<?php $nome = ($_POST["buscaNome"]);
-                          $con = selectUser($nome);
-                          $dado = $con->fetch_array(); ?>" type="submit" name="selecionaruser" class="btn btn-tema" id="selecionaruser">Selecionar Usuario</button>
+        <button type="submit" name="edituser" class="btn btn-tema">Selecionar Usuario</button>
       </form>
       <hr>
     <?php } ?>
 
-    <!-- Informações do Post -->
-    <form id="contactForm" method="post">
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="titulo do post">ID:</label>
-          <input type="text" name="id" class="form-control" id="id" value="<?php echo $dado['id']; ?>" readonly>
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="nome">Nome:</label>
-          <input type="text" name="nome" class="form-control" id="nome" minlength="3" required value="<?php echo $dado['nome']; ?>">
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="email">Email:</label>
-          <input type="email" name="email" class="form-control" id="email" required value="<?php echo $dado['email']; ?>">
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="senha">Senha:</label>
-          <input class="form-control" type="password" name="senhaUser" id="senhaUser" minlength="5" required value="<?php echo $dado['senha']; ?>">
-        </div>
-      </div>
-      <button onclick="
-          <?php $resultado = editarUser($id, $nome, $email, $senha) ?>" type="submit" name="editaruser" class="btn btn-tema" id="editaruser">Editar Usuario</button>
-      <div class="retornoFunc"><?php echo ($resultado); ?></div>
-    </form>
-    <hr>
+
   </div>
 
   <!-- /. Fim do Conteúdo da Pagina -->

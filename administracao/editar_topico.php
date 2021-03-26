@@ -2,13 +2,13 @@
 $logado = "";
 
 session_start();
-if ((!isset($_SESSION['login']) == true) and (!isset($_SESSION['senha']) == true)) {
-  unset($_SESSION['login']);
+if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
+  unset($_SESSION['usuario']);
   unset($_SESSION['senha']);
   header('location: ../index.php');
 }
 
-$logado = $_SESSION['login'];
+$logado = $_SESSION['usuario'];
 
 
 include '../assets/includes/funcoes.php';
@@ -69,44 +69,45 @@ header('content-type: text/html; charset=utf-8'); ?>
       $nome_novo = preg_replace('/[ _-]+/', ' ', $nome);
       $con = selectTopico($nome_novo);
       $dado = $con->fetch_array();
-    } else {
-
     ?>
 
-      <h3>Editar Topico</h3>
-      <form id="busca" method="post">
+      <!-- Informações do Post -->
+      <form method="post" action="../assets/includes/funcoes.php">
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="id do topico">ID:</label>
+            <input type="text" name="id" class="form-control" id="id" value="<?php echo $dado['id']; ?>" readonly>
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="nome do topico">Topico:</label>
+            <input type="text" name="nome" class="form-control" id="nome" minlength="5" value="<?php echo $dado['nome']; ?>" required>
+          </div>
+        </div>
+        <button type="submit" name="editartopico" class="btn btn-tema">Editar Topico</button>
+
+      </form>
+      <hr>
+
+    <?php
+    } else {
+    ?>
+
+      <h3>Selecionar Topico</h3>
+      <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
             <label for="titulo do post">Nome do Topico:</label>
-            <input type="text" name="buscaTopico" class="form-control" id="buscaTopico" minlength="4" required required data-validation-required-message="Por favor, digite o Titulo da postagem para Deletar.">
+            <input type="text" name="buscaTopico" class="form-control" id="buscaTopico" minlength="4" required>
           </div>
         </div>
-        <button onclick="<?php $nome = ($_POST["buscaTopico"]);
-                          $con = selectTopico($nome);
-                          $dado = $con->fetch_array(); ?>" type="submit" name="selecionartopico" class="btn btn-tema" id="selecionartopico">Selecionar Topico</button>
+        <button type="submit" name="editTopic" class="btn btn-tema">Selecionar Topico</button>
       </form>
       <hr>
     <?php } ?>
 
-    <!-- Informações do Post -->
-    <form class="form_control mt-4" id="editar" method="post">
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="id do topico">ID:</label>
-          <input type="text" name="id" class="form-control" id="id" value="<?php echo $dado['id']; ?>" readonly>
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <div class="controls">
-          <label for="nome do topico">Topico:</label>
-          <input type="text" name="nome" class="form-control" id="nome" minlength="10" value="<?php echo $dado['nome']; ?>" required required data-validation-required-message="Por favor, digite o Titulo.">
-        </div>
-      </div>
-      <button onclick="
-            <?php $resultado = editarTopico($id, $nome); ?>" type="submit" name="editartopico" class="btn btn-tema" id="editartopico">Editar Topico</button>
-      <div class="retornoFunc"><?php echo ($resultado); ?></div>
-    </form>
-    <hr>
+
   </div>
 
   <!-- /. Fim do Conteúdo da Pagina -->
