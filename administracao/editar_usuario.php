@@ -45,7 +45,7 @@ header('content-type: text/html; charset=utf-8'); ?>
   <!-- Fim da barra de Navegação -->
 
   <div class="p-5 bg-tema">
-    <h1 class="tituloPrincipalBlog mt-4 mb-3"> Editar Usuario</h1>
+    <h1 class="tituloPrincipalBlog mt-4 mb-3"> Editar Usuário</h1>
   </div>
 
   <!-- Conteúdo da Pagina -->
@@ -59,10 +59,10 @@ header('content-type: text/html; charset=utf-8'); ?>
       <li class="breadcrumb-item">
         <a href="/adm.php">Administração</a>
       </li>
-      <li class="breadcrumb-item active">Editar Usuario</li>
+      <li class="breadcrumb-item active">Editar Usuário</li>
     </ol>
 
-    <!-- Buscar Usuario -->
+    <!-- Buscar Usuário -->
     <?php if (isset($_GET['buscaNome'])) {
       $nome = ($_GET['buscaNome']);
       $nome_novo = preg_replace('/[ _-]+/', ' ', $nome);
@@ -71,6 +71,8 @@ header('content-type: text/html; charset=utf-8'); ?>
     ?>
 
       <!-- Informações do Post -->
+      <h3>Editar Usuário</h3>
+
       <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
@@ -96,7 +98,7 @@ header('content-type: text/html; charset=utf-8'); ?>
             <input class="form-control" type="password" name="senhaUser" id="senhaUser" minlength="5" required value="<?php echo $dado['senha']; ?>">
           </div>
         </div>
-        <button type="submit" name="editaruser" class="btn btn-tema" id="editaruser">Editar Usuario</button>
+        <button type="submit" name="editaruser" class="btn btn-tema" id="editaruser">Editar Usuário</button>
       </form>
       <hr>
 
@@ -104,15 +106,15 @@ header('content-type: text/html; charset=utf-8'); ?>
     } else {
     ?>
 
-      <h3>Editar Usuario</h3>
+      <h3>Selecionar Usuário</h3>
       <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
-            <label for="nome do usuario">Nome do Usuario:</label>
+            <label for="nome do usuario">Nome do Usuário:</label>
             <input type="text" name="buscaNome" class="form-control" id="buscaNome" required>
           </div>
         </div>
-        <button type="submit" name="edituser" class="btn btn-tema">Selecionar Usuario</button>
+        <button type="submit" name="edituser" class="btn btn-tema">Selecionar Usuário</button>
       </form>
       <hr>
     <?php } ?>

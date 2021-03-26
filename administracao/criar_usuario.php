@@ -44,7 +44,7 @@ header('content-type: text/html; charset=utf-8'); ?>
   <!-- Fim da barra de Navegação -->
 
   <div class="p-5 bg-tema">
-    <h1 class="tituloPrincipalBlog mt-4 mb-3"> Criar Usuario</h1>
+    <h1 class="tituloPrincipalBlog mt-4 mb-3"> Criar Usuário</h1>
   </div>
 
   <!-- Conteúdo da Pagina -->
@@ -58,11 +58,11 @@ header('content-type: text/html; charset=utf-8'); ?>
       <li class="breadcrumb-item">
         <a href="/adm.php">Administração</a>
       </li>
-      <li class="breadcrumb-item active">Criar Usuario</li>
+      <li class="breadcrumb-item active">Criar Usuário</li>
     </ol>
 
     <!-- Criando o Post -->
-        <h3>Criar Usuario</h3>
+        <h3>Criar Usuário</h3>
         <form method="post" action="../assets/includes/funcoes.php">
           <div class="control-group form-group">
             <div class="controls">
@@ -82,7 +82,7 @@ header('content-type: text/html; charset=utf-8'); ?>
               <input class="form-control" type="password" name="senhaUser" id="senhaUser" minlength="5" required></input>
             </div>
           </div>
-          <button type="submit" name="criaruser" class="btn btn-tema" id="criaruser">Criar Usuario</button>
+          <button type="submit" name="criaruser" class="btn btn-tema" id="criaruser">Criar Usuário</button>
         </form>
         <hr>
       </div>
@@ -97,7 +97,6 @@ header('content-type: text/html; charset=utf-8'); ?>
   <!-- Scripts -->
   <script src="/assets/jquery/jquery-3.5.1.min.js"></script>
   <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src='/assets/js/jqBootstrapValidation.js'></script>
   <script src="/assets/js/subir_topo.js"></script>
 
 </body>

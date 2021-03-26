@@ -71,6 +71,7 @@ header('content-type: text/html; charset=utf-8'); ?>
       $dado = $con->fetch_array(); ?>
 
       <!-- Informações do Post -->
+      <h3>Deletar Post</h3>
       <form class="form_control mt-4" method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
@@ -105,7 +106,7 @@ header('content-type: text/html; charset=utf-8'); ?>
     <?php
     } else {
     ?>
-
+      <h3>Selecionar Post</h3>
       <form class="form_control" method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">

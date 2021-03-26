@@ -3,9 +3,9 @@ $logado = "";
 
 session_start();
 if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == true)) {
-    unset($_SESSION['usuario']);
-    unset($_SESSION['senha']);
-    header('location: ../index.php');
+  unset($_SESSION['usuario']);
+  unset($_SESSION['senha']);
+  header('location: ../index.php');
 }
 
 $logado = $_SESSION['usuario'];
@@ -45,7 +45,7 @@ header('content-type: text/html; charset=utf-8'); ?>
   <!-- Fim da barra de Navegação -->
 
   <div class="p-5 bg-tema">
-    <h1 class="tituloPrincipalBlog mt-4 mb-3"> Deletar Usuario</h1>
+    <h1 class="tituloPrincipalBlog mt-4 mb-3"> Deletar Usuário</h1>
   </div>
 
   <!-- Conteúdo da Pagina -->
@@ -59,18 +59,19 @@ header('content-type: text/html; charset=utf-8'); ?>
       <li class="breadcrumb-item">
         <a href="/adm.php">Administração</a>
       </li>
-      <li class="breadcrumb-item active">Deletar Usuario</li>
+      <li class="breadcrumb-item active">Deletar Usuário</li>
     </ol>
 
-    <!-- Buscar Usuario -->
+    <!-- Buscar Usuário -->
     <?php if (isset($_GET['buscaNome'])) {
       $nome = ($_GET['buscaNome']);
       $nome_novo = preg_replace('/[ _-]+/', ' ', $nome);
       $con = selectUser($nome_novo);
       $dado = $con->fetch_array();
-?>
+    ?>
 
       <!-- Informações do Post -->
+      <h3>Deletar Usuário</h3>
       <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
@@ -96,22 +97,22 @@ header('content-type: text/html; charset=utf-8'); ?>
             <input class="form-control" type="password" name="senhaUser" id="senhaUser" minlength="5" readonly value="<?php echo $dado['senha']; ?>">
           </div>
         </div>
-        <button type="submit" name="deletaruser" class="btn btn-atencao">Deletar Usuario</button>
+        <button type="submit" name="deletaruser" class="btn btn-atencao">Deletar Usuário</button>
       </form>
       <hr>
     <?php
     } else {
     ?>
 
-      <h3>Deletar Usuario</h3>
+      <h3>Selecionar Usuário</h3>
       <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
-            <label for="nome do usuario">Nome do Usuario:</label>
+            <label for="nome do usuario">Nome do Usuário:</label>
             <input type="text" name="buscaNome" class="form-control" id="buscaNome" required>
           </div>
         </div>
-        <button type="submit" name="deluser" class="btn btn-tema">Selecionar Usuario</button>
+        <button type="submit" name="deluser" class="btn btn-tema">Selecionar Usuário</button>
       </form>
       <hr>
     <?php } ?>

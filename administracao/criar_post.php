@@ -101,7 +101,7 @@ header('content-type: text/html; charset=utf-8mb4'); ?>
         </div>
       </div>
       <div class="control-group form-group">
-        <label for="topico">Selecione o Topico:</label>
+        <label for="topico">Selecione o Tópico:</label>
         <select class="form-control" id="topico" name="topico">
           <?php
           $con = topicos();

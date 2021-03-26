@@ -77,7 +77,7 @@ header('content-type: text/html; charset=utf-8mb4'); ?>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="opcao" id="topico" value="topico">
-                    <label class="form-check-label" for="topico">ID Topico</label>
+                    <label class="form-check-label" for="topico">ID Tópico</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="opcao" id="usuario" value="usuario">
@@ -97,8 +97,8 @@ header('content-type: text/html; charset=utf-8mb4'); ?>
                     <tr>
                         <th scope="col">Código</th>
                         <th scope="col">Titulo</th>
-                        <th scope="col">Código do Topico</th>
-                        <th scope="col">Data de Cadastro</th>
+                        <th scope="col">Código do Tópico</th>
+                        <th scope="col">Data de Criação</th>
                         <th scope="col">Código do Usuario</th>
                         <th scope="col">Opção</th>
                     </tr>

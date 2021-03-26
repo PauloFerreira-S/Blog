@@ -46,7 +46,7 @@ header('content-type: text/html; charset=utf-8'); ?>
   <!-- Fim da barra de Navegação -->
 
   <div class="p-5 bg-tema">
-    <h1 class="tituloPrincipalBlog mt-4 mb-3"> Editar Topico</h1>
+    <h1 class="tituloPrincipalBlog mt-4 mb-3"> Editar Tópico</h1>
   </div>
 
   <!-- Conteúdo da Pagina -->
@@ -60,10 +60,10 @@ header('content-type: text/html; charset=utf-8'); ?>
       <li class="breadcrumb-item">
         <a href="/adm.php">Administração</a>
       </li>
-      <li class="breadcrumb-item active">Editar Topico</li>
+      <li class="breadcrumb-item active">Editar Tópico</li>
     </ol>
 
-    <!-- Buscar Topico -->
+    <!-- Buscar Tópico -->
     <?php if (isset($_GET['buscaTopico'])) {
       $nome = ($_GET['buscaTopico']);
       $nome_novo = preg_replace('/[ _-]+/', ' ', $nome);
@@ -72,6 +72,7 @@ header('content-type: text/html; charset=utf-8'); ?>
     ?>
 
       <!-- Informações do Post -->
+      <h3>Editar Tópico</h3>
       <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
@@ -81,11 +82,11 @@ header('content-type: text/html; charset=utf-8'); ?>
         </div>
         <div class="control-group form-group">
           <div class="controls">
-            <label for="nome do topico">Topico:</label>
+            <label for="nome do topico">Tópico:</label>
             <input type="text" name="nome" class="form-control" id="nome" minlength="5" value="<?php echo $dado['nome']; ?>" required>
           </div>
         </div>
-        <button type="submit" name="editartopico" class="btn btn-tema">Editar Topico</button>
+        <button type="submit" name="editartopico" class="btn btn-tema">Editar Tópico</button>
 
       </form>
       <hr>
@@ -94,15 +95,15 @@ header('content-type: text/html; charset=utf-8'); ?>
     } else {
     ?>
 
-      <h3>Selecionar Topico</h3>
+      <h3>Selecionar Tópico</h3>
       <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
-            <label for="titulo do post">Nome do Topico:</label>
+            <label for="titulo do post">Nome do Tópico:</label>
             <input type="text" name="buscaTopico" class="form-control" id="buscaTopico" minlength="4" required>
           </div>
         </div>
-        <button type="submit" name="editTopic" class="btn btn-tema">Selecionar Topico</button>
+        <button type="submit" name="editTopic" class="btn btn-tema">Selecionar Tópico</button>
       </form>
       <hr>
     <?php } ?>

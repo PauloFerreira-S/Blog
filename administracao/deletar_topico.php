@@ -63,7 +63,7 @@ header('content-type: text/html; charset=utf-8'); ?>
       <li class="breadcrumb-item active">Deletar Tópico</li>
     </ol>
 
-    <!-- Buscar Topico -->
+    <!-- Buscar Tópico -->
     <?php if (isset($_GET['buscaTopico'])) {
       $nome = ($_GET['buscaTopico']);
       $nome_novo = preg_replace('/[ _-]+/', ' ', $nome);
@@ -72,6 +72,7 @@ header('content-type: text/html; charset=utf-8'); ?>
     ?>
 
       <!-- Informações do Post -->
+      <h3>Deletar Tópico</h3>
       <form class="form_control mt-4" id="deletar" method="post">
         <div class="control-group form-group">
           <div class="controls">
@@ -81,7 +82,7 @@ header('content-type: text/html; charset=utf-8'); ?>
         </div>
         <div class="control-group form-group">
           <div class="controls">
-            <label for="nome do topico">Topico:</label>
+            <label for="nome do topico">Tópico:</label>
             <input type="text" name="nome" class="form-control" id="nome" minlength="10" value="<?php echo $dado['nome']; ?>" readonly>
           </div>
         </div>
@@ -94,15 +95,15 @@ header('content-type: text/html; charset=utf-8'); ?>
 
     ?>
 
-      <h3>Selecionar Topico</h3>
+      <h3>Selecionar Tópico</h3>
       <form method="post" action="../assets/includes/funcoes.php">
         <div class="control-group form-group">
           <div class="controls">
-            <label for="titulo do post">Nome do Topico:</label>
+            <label for="titulo do post">Nome do Tópico:</label>
             <input type="text" name="buscaTopico" class="form-control" id="buscaTopico" minlength="4" required>
           </div>
         </div>
-        <button type="submit" name="delTopic" class="btn btn-tema">Selecionar Topico</button>
+        <button type="submit" name="delTopic" class="btn btn-tema">Selecionar Tópico</button>
       </form>
       <hr>
     <?php } ?>

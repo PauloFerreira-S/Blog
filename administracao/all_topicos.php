@@ -46,7 +46,7 @@ header('content-type: text/html; charset=utf-8mb4'); ?>
     <!-- Fim da barra de Navegação -->
 
     <div class="p-5 bg-tema">
-        <h1 class="tituloPrincipalBlog mt-4 mb-3">Topicos Criados</h1>
+        <h1 class="tituloPrincipalBlog mt-4 mb-3">Tópicos Criados</h1>
     </div>
 
     <!-- Conteúdo da Pagina -->
@@ -60,12 +60,12 @@ header('content-type: text/html; charset=utf-8mb4'); ?>
             <li class="breadcrumb-item">
                 <a href="/adm.php">Administração</a>
             </li>
-            <li class="breadcrumb-item active">Topicos Criados</li>
+            <li class="breadcrumb-item active">Tópicos Criados</li>
         </ol>
 
         <!-- Criando o Post -->
 
-        <h3>Topicos Criados</h3>
+        <h3>Tópicos Criados</h3>
 
         <div class="table-responsive text-center">
             <table class="table table-striped table-borderless table-light">
