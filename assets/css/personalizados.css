@@ -7,9 +7,23 @@
   padding-top: 70px !important;
   background-color: #f0feff2c;
 }
+
 a{
   color: #0375b4;
 }
+
+@media(min-height: 825px){
+  .container{
+    min-height: 350px !important;
+  }
+}
+@media(min-height: 825px){
+  .container{
+    min-height: 500px !important;
+  }
+}
+
+
 .list-group-item.active{
   background-color: #0375b4;
 }

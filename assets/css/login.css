@@ -4,8 +4,8 @@ html{
 }
 
 body{
-  background-image: linear-gradient(#003f61,#004e79,#1c6891, #005e91,#1c6891,#004e79,#003f61);
-  background-color: #0375b4;
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,61,255,1) 0%, rgba(71,9,121,1) 66%);  
 }
 
 #login .container #login-row #login-column #login-box {
@@ -14,6 +14,7 @@ body{
   border: 1px inset #7977ee;
   background-color: #f1f1f1;
   box-shadow: 2px 2px 2px #999;
+  border-radius: 5%;
 }
 
 #login .container #login-row #login-column #login-box #login-form {
