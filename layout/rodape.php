@@ -7,11 +7,7 @@
 
       <div class="mt-4">
 
-      <!-- COLOQUE OS LINKS URL, PARA AS REDES SOCIAIS NO HREF DE CADA UM. COMO VISTO ABAIXO O LINKEDIN ESTA DESATIVADO TIRE A TAG DE COMENTARIO PARA REATIVA-LO-->
-        <!-- Instagram -->
-        <a class="icones instagram" aria-label="Instagram do BLOG" href="#" target="_blank" rel="noopener">
-          <i class="fa fa-instagram my-float"></i>
-        </a>
+        <!-- COLOQUE OS LINKS URL, PARA AS REDES SOCIAIS NO HREF DE CADA UM. COMO VISTO ABAIXO O LINKEDIN ESTA DESATIVADO TIRE A TAG DE COMENTARIO PARA REATIVA-LO-->
 
         <!-- Youtube -->
         <a class="icones youtube" aria-label="Youtube do BLOG" href="#" target="_blank" rel="noopener">
@@ -23,10 +19,20 @@
           <i class="fa fa-facebook my-float"></i>
         </a>
 
+        <!-- twitter -->
+        <a class="icones twitter" aria-label="Twitter do BLOG" href="#" target="_blank" rel="noopener">
+          <i class="fa fa-twitter my-float"></i>
+        </a>
+        
         <!-- Linkedin
-      <a class="icones linkedin" aria-label="linkedin do BLOG" href="#" target="_blank" rel="noopener">
-        <i class="fa fa-linkedin"></i>
-      </a>-->
+        <a class="icones linkedin" aria-label="linkedin do BLOG" href="#" target="_blank" rel="noopener">
+          <i class="fa fa-linkedin"></i>
+        </a>-->
+
+        <!-- Instagram 
+        <a class="icones instagram" aria-label="Instagram do BLOG" href="#" target="_blank" rel="noopener">
+          <i class="fa fa-instagram my-float"></i>
+        </a>-->
 
       </div>
     </div>
@@ -42,11 +48,12 @@
 <!-- WhatsApp -->
 
 <!-- PARA MANDAR UMA MENSAGEM PARA O WHATS-APP DEFINA O TELEFONE APOS O phone=XXXXXXXXXX&amp
-      O TEXTO E OPCIONAL, CASO QUEIRA TELO DEPOIS DE text= NÃO PODE CONTER ESPAÇOS, QUANDO HOUVER ESPAÇO COLOQUE %20 EM SEU LUGAR-->
+      O TEXTO E OPCIONAL, CASO QUEIRA TELO DEPOIS DE text= NÃO PODE CONTER ESPAÇOS, QUANDO HOUVER ESPAÇO COLOQUE %20 EM SEU LUGAR
 
+//BOTÃO WHATSAPP//
 <a class="whats-app" aria-label="whats app" href="https://api.whatsapp.com/send?phone=XXXXXXXXXX&amp;text=XXXXX%20XXXX" target="_blank" rel="noopener">
   <i class="fa fa-whatsapp"></i>
-</a>
+</a>-->
 
 <!-- Telegram 
 <a class="telegram" aria-label="telegram" href="https://t.me/nome_usuario" target="_blank" rel="noopener">

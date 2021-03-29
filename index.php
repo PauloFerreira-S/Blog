@@ -9,8 +9,6 @@ if ((!isset($_SESSION['usuario']) == true) and (!isset($_SESSION['senha']) == tr
   $logado = $_SESSION['usuario'];
 }
 
-
-
 include 'assets/includes/funcoes.php';
 header('content-type: text/html; charset=utf-8'); ?>
 
@@ -73,7 +71,7 @@ header('content-type: text/html; charset=utf-8'); ?>
           <div class="card mb-4">
             <img class="card-img-top" alt="Card image cap" <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($dado['imagem']) . '"'; ?>>
             <div class="card-body">
-              <h2 class="card-title"><?php echo $dado['titulo']; ?></h2>
+              <h3 class="card-title"><?php echo $dado['titulo']; ?></h3>
               <p class="card-text text-justify"><?php echo $dado['descricao']; ?></p>
               <?php $titulo = $dado['titulo'];
               $titulo_novo = preg_replace('/[ -]+/', '_', $titulo);
@@ -105,7 +103,7 @@ header('content-type: text/html; charset=utf-8'); ?>
       <div class="col-md-4">
 
         <div class="card mb-4">
-          <h5 class="card-header">Pesquisar</h5>
+          <h4 class="card-header">Pesquisar</h4>
           <form id="pesquisar" method="post" action="pesquisa.php">
             <div class="card-body">
               <div class="input-group">
@@ -120,7 +118,7 @@ header('content-type: text/html; charset=utf-8'); ?>
 
         <!-- Categorias -->
         <div class="card">
-          <h5 class="card-header">Categorias</h5>
+          <h4 class="card-header">Categorias</h4>
           <div class="card-body">
             <ul class="ulCategorias">
               <?php $con = topicos();
