@@ -138,6 +138,11 @@ a{
   color: #d10000 !important;
 }
 
+.twitter:hover{
+  border-color: #196dc7;
+  color: #2872c2 !important;
+}
+
 /* Icones fixos na tela */
 .whats-app {
   position: fixed;
