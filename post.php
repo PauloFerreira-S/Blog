@@ -44,19 +44,28 @@ header('content-type: text/html; charset=utf-8'); ?>
   <!-- Fim da barra de Navegação -->
 
   <?php
-  $titulo = ($_GET['post']);
-  $titulo_novo = preg_replace('/[ _-]+/', ' ', $titulo);
-  $con = selectPost($titulo_novo);
-
-  if (mysqli_num_rows($con) > 0) {
-    $dado = $con->fetch_array();
+  if (isset($_GET['post'])) {
+    $titulo = ($_GET['post']);
+    $titulo_novo = preg_replace('/[ _-]+/', ' ', $titulo);
+    $con = selectPost($titulo_novo);
+    if (mysqli_num_rows($con) > 0) {
+      $dado = $con->fetch_array();
+    } else {
+      $dado['titulo'] = "Post não Encontrado";
+      $dado['descricao'] = "";
+      $dado['texto'] = "";
+      $dado['criado_em'] = "";
+      $dado['imagem'] = "";
+    }
   } else {
-    $dado = $con->fetch_array();
     $dado['titulo'] = "Post não Encontrado";
     $dado['descricao'] = "";
     $dado['texto'] = "";
     $dado['criado_em'] = "";
-  } ?>
+    $dado['imagem'] = "";
+  }
+  ?>
+
 
 
 
@@ -108,7 +117,7 @@ header('content-type: text/html; charset=utf-8'); ?>
           <form id="pesquisar" method="post" action="pesquisa.php">
             <div class="card-body">
               <div class="input-group">
-                <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por...">
+                <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por..." required>
                 <span class="input-group-append">
                   <button type="submit" class="btn btn-secondary" name="btnPesquisa" id="btnPesquisa">Pesquisar</button>
                 </span>

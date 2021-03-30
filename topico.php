@@ -47,32 +47,42 @@ header('content-type: text/html; charset=utf-8'); ?>
     <div class="container">
 
         <?php
+        $con = "";  
         if (isset($_GET['topico'])) {
             $topico = ($_GET['topico']);
             $topico_novo = preg_replace('/[ _-]+/', ' ', $topico);
             $con = getTopico($topico_novo);
+        } else {
+            $topico_novo = "";
+            $dado['titulo'] = "Post não Encontrado";
+            $dado['descricao'] = "";
+            $dado['texto'] = "";
+            $dado['criado_em'] = "";
+            $dado['imagem'] = "";
+        }
         ?>
-            <!-- Cabeçalho da Pagina  -->
-            <h1 class="mt-4 mb-3 titulosh1"><?php echo $topico_novo; ?>
-            </h1>
+        <!-- Cabeçalho da Pagina  -->
+        <h1 class="mt-4 mb-3 titulosh1"><?php echo $topico_novo; ?>
+        </h1>
 
-            <ol class="breadcrumb bg-breadTema texto-bread mt-4">
-                <li class="breadcrumb-item">
-                    <a href="/">Blog</a>
-                </li>
-                <li class="breadcrumb-item active"><?php echo $topico_novo; ?></li>
-            </ol>
+        <ol class="breadcrumb bg-breadTema texto-bread mt-4">
+            <li class="breadcrumb-item">
+                <a href="/">Blog</a>
+            </li>
+            <li class="breadcrumb-item active"><?php echo $topico_novo; ?></li>
+        </ol>
 
-            <div class="row">
+        <div class="row">
 
-                <!-- Coluna onde ficara as Postagens -->
-                <div class="col-md-8">
-                    <h2 class="blogh2">Tópico '<?php echo $topico_novo; ?>'</h2>
+            <!-- Coluna onde ficara as Postagens -->
+            <div class="col-md-8">
+                <h2 class="blogh2">Tópico '<?php echo $topico_novo; ?>'</h2>
 
-                    <!-- Postagens -->
-                    <?php
+                <!-- Postagens -->
+                <?php
+                if ($topico_novo != "") {
                     while ($dado = $con->fetch_array()) {
-                    ?>
+                ?>
 
                         <div class="card mb-4">
                             <img class="card-img-top" alt="Card image cap" <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($dado['imagem']) . '"'; ?>>
@@ -88,45 +98,69 @@ header('content-type: text/html; charset=utf-8'); ?>
                                 Postado em <?php echo $dado['criado_em']; ?>
                             </div>
                         </div>
-                <?php }
-                } ?>
-                </div>
 
-                <!-- Barra Lateral -->
-                <div class="col-md-4">
+                    <?php
+                    }
+                } else {
+                    $dado['titulo'] = "Post não Encontrado";
+                    $dado['descricao'] = "";
+                    $dado['texto'] = "";
+                    $dado['criado_em'] = "";
+                    $dado['imagem'] = "";
+                    ?>
 
                     <div class="card mb-4">
-                        <h5 class="card-header">Pesquisar</h5>
-                        <form id="pesquisar" method="post" action="pesquisa.php">
-                            <div class="card-body">
-                                <div class="input-group">
-                                    <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por...">
-                                    <span class="input-group-append">
-                                        <button type="submit" class="btn btn-secondary" name="btnPesquisa" id="btnPesquisa">Pesquisar</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Categorias -->
-                    <div class="card">
-                        <h5 class="card-header">Categorias</h5>
+                        <img class="card-img-top" alt="Imagem do post" <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($dado['imagem']) . '"'; ?>>
                         <div class="card-body">
-                            <ul class="ulCategorias">
-                                <?php $con = topicos();
-                                while ($dado = $con->fetch_array()) { ?>
-                                    <li class="liCategorias">
-                                        <a href="#"><?php echo $dado['nome']; ?></a>
-                                    </li>
-                                <?php } ?>
-                            </ul>
+                            <h2 class="card-title"><?php echo $dado['titulo']; ?></h2>
+                            <p class="card-text text-justify"><?php echo $dado['descricao']; ?></p>
                         </div>
                     </div>
-                </div>
+                <?php
+                }
+                ?>
             </div>
 
-            <hr>
+        <!-- Barra Lateral -->
+        <div class="col-md-4">
+
+            <div class="card mb-4">
+                <h5 class="card-header">Pesquisar</h5>
+                <form id="pesquisar" method="post" action="pesquisa.php">
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por..." required>
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-secondary" name="btnPesquisa" id="btnPesquisa">Pesquisar</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Categorias -->
+            <div class="card">
+                <h4 class="card-header">Categorias</h4>
+                <div class="card-body">
+                    <ul class="ulCategorias">
+                        <?php $con = topicos();
+                        while ($dado = $con->fetch_array()) { ?>
+                            <li class="liCategorias">
+                                <?php $topico = $dado['nome'];
+                                $topico_novo = preg_replace('/[ -]+/', '_', $topico);
+                                ?>
+                                <a href="topico.php?topico=<?php echo $topico_novo; ?>"><?php echo $dado['nome']; ?></a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <hr>
 
     </div>
     <!-- /. Fim do Conteúdo da Pagina -->

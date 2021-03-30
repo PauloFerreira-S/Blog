@@ -116,7 +116,7 @@ header('content-type: text/html; charset=utf-8'); ?>
                     <form id="pesquisar" method="post" action="pesquisa.php">
                         <div class="card-body">
                             <div class="input-group">
-                                <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por...">
+                                <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por..." required>
                                 <span class="input-group-append">
                                     <button type="submit" class="btn btn-secondary" name="btnPesquisa" id="btnPesquisa">Pesquisar</button>
                                 </span>
